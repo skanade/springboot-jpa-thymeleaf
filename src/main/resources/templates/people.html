@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<p><span th:text="${appName}">My App</span></p>
+</body>
+<table>
+  <tr th:each="people: ${peoples}">
+    <td th:text="${people.id}" />
+    <td th:text="${people.first}" />
+    <td th:text="${people.last}" />
+  </tr>
+</table>
+
+</html>
