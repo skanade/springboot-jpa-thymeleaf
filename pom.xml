@@ -121,10 +121,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M1</version>
                 <configuration>
-                    <includes>
-                        <include>**/*FastTests.*</include>
-                        <!--<include>**/*SlowTests.*</include>-->
-                    </includes>
+                    <excludes>
+                        <exclude>**/*FastTests.*</exclude>
+                        <exclude>**/*SlowTests.*</exclude>
+                    </excludes>
                 </configuration>
                 <!-- maybe below necessary to run SlowTests or FastTests using JUnitPlatform
                 <dependencies>
