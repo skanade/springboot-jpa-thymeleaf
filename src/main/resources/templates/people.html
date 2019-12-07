@@ -2,9 +2,29 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#languages").change(function () {
+        var selectedOption = $('#languages').val();
+        if (selectedOption != ''){
+            window.location.replace('?lang=' + selectedOption);
+        }
+    });
+});
+</script>
 </head>
 <body>
-<p><span th:text="${appName}">My App</span></p>
+<h2 th:text="${appName}">My App</h2>
+<span th:text="#{lang.change}">Change</span>:
+<select id="languages">
+  <option value=""></option>
+  <option value="en" th:text="#{lang.eng}">en</option>
+  <option value="fr" th:text="#{lang.fr}">fr</option>
+  <option value="ja" th:text="#{lang.ja}">ja</option>
+</select>
+<p><span th:text="#{greeting}">Hi</span></p>
 </body>
 <table>
   <tr th:each="people: ${peoples}">
