@@ -25,7 +25,7 @@ $(document).ready(function() {
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-md-8">
       <span th:text="#{lang.change}">Change</span>:
       <select id="languages">
         <option value=""></option>
@@ -34,15 +34,20 @@ $(document).ready(function() {
         <option value="ja" th:text="#{lang.ja}">ja</option>
       </select>
       <p class="lead"><span th:text="#{greeting}">Hi</span></p>
-      <table>
-        <tr th:each="people: ${peoples}">
-          <td th:text="${people.id}"/>
-          <td><a href="" th:href="@{/people/update(id=${people.id})}" th:text="|${people.first} ${people.last}|"></a></td>
-          <td><a href="" th:href="@{/people/delete(id=${people.id})}" class="button">Delete</a></td>
-        </tr>
-      </table>
+      <div class="container">
+        <div class="row" th:each="people: ${peoples}">
+          <div class="col-1" th:text="${people.id}"></div>
+          <div class="col-4">
+            <a href="" th:href="@{/people/update(id=${people.id})}" th:text="|${people.first} ${people.last}|"></a>
+          </div>
+          <div class="col">
+            <a href="" th:href="@{/people/delete(id=${people.id})}" class="button">Delete</a>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-md-4 order-first order-md-last">
       <div class='create-new'>
         <form action='/people/create' method='get'>
           <input class='main-button' type='submit' value='Create New'/>
