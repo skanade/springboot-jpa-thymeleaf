@@ -30,7 +30,17 @@
         console.log("jqXHR.status: "+jqXHR.status);
         console.log("jqXHR.responseText: "+jqXHR.responseText);
 
-        $("#search-results").html(JSON.stringify(data));
+        var output= "";
+        for (i=0; i < data.length; i++) {
+          output += "<tr>";
+          output += "<td scope='col'>" + data[i].id + "</td>";
+          output += "<td scope='col'>" + data[i].first + "</td>";
+          output += "<td scope='col'>" + data[i].last+ "</td>";
+          output += "</tr>";
+        }
+
+        //$("#search-results").html(JSON.stringify(data));
+        $("#search-results").html(output);
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         console.log("ajax.fail");
@@ -59,12 +69,22 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-md-12">
       <input id="search-text" type="text" name="search-name" value=""/>
       <a href="" id="search-button" class="button">Search</input>
     </div>
-    <div id="search-results" class="col-sm-12">
-      search results will show up here
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col-md-4">ID</th>
+            <th scope="col-md-4">First</th>
+            <th scope="col-md-4">Last</th>
+          </tr>
+        </thead>
+        <tbody id="search-results">
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

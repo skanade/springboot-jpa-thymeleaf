@@ -91,8 +91,9 @@ public class PeopleController {
 
     @RequestMapping(value="/people/search", produces="application/json", consumes="application/json")
     @ResponseBody
-    public List<People> search(Model model) {
-        return findAll();
+    public List<People> search(@RequestBody SearchText searchText) {
+        List<People> result = peopleRepository.findByFirstOrLastLike(searchText.getText());
+        return result;
     }
 
     private List<People> findAll() {
